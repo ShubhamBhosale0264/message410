@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2 align="center"> Student Dashboard</h2>
+    <table border ="5">
+        <tr>
+            <th>Sr.no</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile Number</th>
+            <th>Message</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for x in data %}
+        <tr >
+            <td>{{forloop.counter}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.mobile}}</td>
+            <td>{{x.mesg}}</td>
+            <td><a href = "/edit/{{x.id}}">Edit</a></td>
+            <td><a href = "/delete/{{x.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/create">Create Data</a>
+</body>
+</html>
